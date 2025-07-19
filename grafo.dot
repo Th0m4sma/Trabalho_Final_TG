@@ -1,0 +1,41 @@
+graph G {
+  //Estilo padrão dos nós(para imprimir)
+  node [shape=box, style=filled, color=lightgray];
+
+  // Subgrafo de Professores
+  subgraph cluster_professores {
+    label = "Professores";
+    style = filled;
+    color = lightblue;
+
+    P1 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P2 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P3 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P4 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P5 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P6 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P7 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P8 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P9 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P10 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P11 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+  }
+
+  // Subgrafo de Matérias
+  subgraph cluster_materias {
+    label = "Matérias";
+    style = filled;
+    color = lightgreen;
+
+    M1 [label="Matemática"];
+    M2 [label="Física"];
+    M3 [label="História"];
+    M4 [label="Biologia"];
+  }
+
+  //Ligações entre professores e matérias
+  P1 -- M1;
+  P1 -- M2;
+  P2 -- M3;
+  P3 -- M4;
+}
