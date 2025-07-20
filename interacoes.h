@@ -36,8 +36,9 @@ disciplina* pegar_disciplinas(const char* arquivo_dot, int* total);
 professor* carregar_professores(const char *nome_arquivo, int *quantidade);
 void ler_professores(const char *nome_arquivo);
 void ler_materias(const char *nome_arquivo);
-
-
+char* trim(char* str);
+void imprimir_lista_adjacencia(NoDisc* lista, int qtd_disc);
+NoDisc* construir_lista_adjacencia(disciplina* disciplinas, int qtd_disc, professor* professores, int qtd_prof);
 
 
 

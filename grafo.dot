@@ -2,6 +2,11 @@ graph G {
   //Estilo padrão dos nós(para imprimir)
   node [shape=box, style=filled, color=lightgray];
 
+
+
+
+
+
   // Subgrafo de Professores
   subgraph cluster_professores {
     label = "Professores";
@@ -15,13 +20,23 @@ graph G {
     P5 [label= "Nome: Lilian Berton \nMatérias: LP, AED1, IA, AED2 \nTurno: [h1,h2]  \nMáx. Aulas: 2"];
   }
 
+
+
+
+
+
+
+
+
+
+
   //Subgrafo de Matérias
   subgraph cluster_materias {
     label = "Matérias";
     style = filled;
     color = lightgreen;
 
-    M1 [label="nome: AED1 \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
+    M1 [label="AED1 \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
     M2 [label="AED2 \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 20"];
     M3 [label="BD \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
     M4 [label="SEDO \nHoras: 72 \nSala: 1 \nsemestre: 2 \npeso: 20"];
@@ -30,6 +45,17 @@ graph G {
     M7 [label="IA \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 15"];
     M8 [label="LP \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 20"];
   }
+
+
+
+
+
+
+
+
+
+
+
 
   //Ligações entre professores e matérias
   P1 -- M1;

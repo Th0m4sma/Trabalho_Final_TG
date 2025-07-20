@@ -1,0 +1,65 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
+#include "interface.h"
+#include "interacoes.h"
+
+
+void limpar_terminal() {
+    #ifdef _WIN32
+        system("cls");  // Windows
+    #else
+        system("clear"); // Linux e macOS
+    #endif
+}
+
+
+void imprimir_linha_simples() {
+    printf("][═════════════════════════════════════════════════════════════════════][\n");
+
+}
+
+void imprimir_banner() {
+    printf("╔═══════════════════════════════════════════════════════════════════════╗\n");
+    printf("║                                                                       ║\n");
+    printf("║                  ╔═════════════════════════════════╗                  ║\n");
+    printf("║                  ║   BEM-VINDO AO MENU PRINCIPAL   ║                  ║\n");
+    printf("║                  ╚═════════════════════════════════╝                  ║\n");
+    printf("║                                                                       ║\n");
+    printf("║      ───────────────────── MATRIZ HORÁRIA ─────────────────────       ║\n");
+    printf("║                                                                       ║\n");
+    printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
+}
+
+
+void saindo_menu_principal() {
+
+}
+
+void imprimir_disciplinas_prof(professor* professores,int qtd_prof) {
+    int i;
+
+    printf("Professores carregados:\n\n");
+    for (int i = 0; i < qtd_prof; i++) {
+        printf("ID: %d\n", professores[i].id);
+        printf("Nome: %s\n", professores[i].nome);
+        printf("Matérias: %s\n", professores[i].materias);
+        printf("Turno: %s\n", professores[i].turno);
+        printf("Máx. Aulas: %d\n\n", professores[i].max_aulas);
+    }
+}
+
+void imprimir_disciplinas_disc(disciplina* disciplinas,int qtd_disc) {
+    int i;
+
+    printf("Materias carregadas:\n\n");
+    for (int i = 0; i < qtd_disc; i++) {
+        printf("ID: %d\n", disciplinas[i].id);
+        printf("Nome: %s\n", disciplinas[i].nome);
+        printf("Peso: %d\n", disciplinas[i].peso);
+        printf("Tipo Sala: %d\n", disciplinas[i].tipo_sala);
+        printf("Horas Disciplina: %d\n\n", disciplinas[i].horas_disc);
+    }
+}

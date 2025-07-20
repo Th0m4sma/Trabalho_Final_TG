@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include <ctype.h>
 #include "interacoes.h"
 
@@ -8,7 +9,7 @@
 #define MAX_PROFESSORES 100
 #define MAX_DISC  20
 
-
+// => FUNÇÕES BASICAS PARA LER GRAFO.DOT COM PROFESSORES E DISCIPLINAS:
 void ler_professores(const char *nome_arquivo) {
     FILE *file = fopen(nome_arquivo, "r");
     if (!file) {
@@ -60,8 +61,6 @@ void ler_professores(const char *nome_arquivo) {
     fclose(file);
 }
 
-
-
 void ler_materias(const char *nome_arquivo) {
     FILE *file = fopen(nome_arquivo, "r");
     if (!file) {
@@ -102,9 +101,6 @@ void ler_materias(const char *nome_arquivo) {
 
     fclose(file);
 }
-
-
-
 
 professor* carregar_professores(const char *nome_arquivo, int *quantidade) {
     FILE *file = fopen(nome_arquivo, "r");
@@ -181,9 +177,6 @@ professor* carregar_professores(const char *nome_arquivo, int *quantidade) {
     *quantidade = count;
     return lista;
 }
-
-
-
 
 disciplina* pegar_disciplinas(const char* arquivo_dot, int* total) {
     FILE* arquivo = fopen(arquivo_dot, "r");
@@ -276,14 +269,51 @@ disciplina* pegar_disciplinas(const char* arquivo_dot, int* total) {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+// => PARTE PARA CONSTRUIR LISTA DE ADJACENCIA, JUNTAMENTE COM FUNÇAO DE IMPRIMIR:
+
+// Remove espaços à esquerda e à direita de uma string
+char* trim(char* str) {
+    while (isspace((unsigned char)*str)) str++;  // remove espaços do início
+
+    if (*str == 0) return str;  // string vazia
+
+    // remove espaços do final
+    char* end = str + strlen(str) - 1;
+    while (end > str && isspace((unsigned char)*end)) end--;
+
+    *(end + 1) = '\0';
+    return str;
+}
+
 // Função auxiliar para verificar se uma disciplina está nas matérias do professor
 bool professor_pode_dar(professor* prof, const char* nome_disciplina) {
-    char materias_copia[MAX_MATERIA];
+    char materias_copia[512];
     strcpy(materias_copia, prof->materias);
+
+    char nome_disciplina_limpa[128];
+    strncpy(nome_disciplina_limpa, nome_disciplina, sizeof(nome_disciplina_limpa) - 1);
+    nome_disciplina_limpa[sizeof(nome_disciplina_limpa) - 1] = '\0';
+    strcpy(nome_disciplina_limpa, trim(nome_disciplina_limpa));  // Limpa espaços
 
     char* token = strtok(materias_copia, ",");
     while (token != NULL) {
-        if (strcmp(token, nome_disciplina) == 0) {
+        char* materia_limpa = trim(token);
+
+        //printf("Comparando disciplina '%s' com '%s'\n", materia_limpa, nome_disciplina_limpa);
+
+        if (strcmp(materia_limpa, nome_disciplina_limpa) == 0) {
             return true;
         }
         token = strtok(NULL, ",");
@@ -294,6 +324,7 @@ bool professor_pode_dar(professor* prof, const char* nome_disciplina) {
 // Cria a lista de adjacência
 NoDisc* construir_lista_adjacencia(disciplina* disciplinas, int qtd_disc, professor* professores, int qtd_prof) {
     NoDisc* lista = malloc(qtd_disc * sizeof(NoDisc));
+
     if (!lista) {
         perror("Erro ao alocar lista de adjacência");
         exit(EXIT_FAILURE);
@@ -316,3 +347,38 @@ NoDisc* construir_lista_adjacencia(disciplina* disciplinas, int qtd_disc, profes
 
     return lista;
 }
+
+// Função que imprimi a lista de adjacencia
+void imprimir_lista_adjacencia(NoDisc* lista, int qtd_disc) {
+    printf("\n--- Lista de Adjacência (Disciplinas -> Professores) ---\n");
+    for (int i = 0; i < qtd_disc; i++) {
+        printf("Disciplina: %s (ID %d) -> ", lista[i].disc->nome, lista[i].disc->id);
+        
+        ProfAdj* atual = lista[i].lista_profs;
+        if (!atual) {
+            printf("Nenhum professor disponível.");
+        }
+        
+        while (atual) {
+            printf("[%s (ID %d)]", atual->prof->nome, atual->prof->id);
+            atual = atual->prox;
+            if (atual) printf(" -> ");
+        }
+        printf("\n");
+    }
+}
+
+
+// => APLICANDO ESTRATEGIA PARA DETERMINAR OS PROFESSORES(BACKTRACKING):
+
+int* determinando_professores_disciplina() {
+
+}
+
+
+
+
+
+
+
+
