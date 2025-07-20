@@ -8,29 +8,27 @@ graph G {
     style = filled;
     color = lightblue;
 
-    P1 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P2 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P3 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P4 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P5 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P6 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P7 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P8 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P9 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P10 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
-    P11 [label= "Nome: João \nMatérias: Matemática, Física \nTurno: Manhã  \nMáx. Aulas: 3"];
+    P1 [label= "Nome: Otavio \nMatérias: AED1, LP, AED2 \nTurno: [h1]  \nMáx. Aulas: 1"];
+    P2 [label= "Nome: Daniela \nMatérias: CUV, SEDO, CVV \nTurno: [h2]  \nMáx. Aulas: 1"];
+    P3 [label= "Nome: Daniela Musa \nMatérias: BD, AED1 \nTurno: [h1,h2]  \nMáx. Aulas: 2"];
+    P4 [label= "Nome: Regina \nMatérias: AED1, AED2 \nTurno: [h2]  \nMáx. Aulas: 1"];
+    P5 [label= "Nome: Lilian Berton \nMatérias: LP, AED1, IA, AED2 \nTurno: [h1,h2]  \nMáx. Aulas: 2"];
   }
 
-  // Subgrafo de Matérias
+  //Subgrafo de Matérias
   subgraph cluster_materias {
     label = "Matérias";
     style = filled;
     color = lightgreen;
 
-    M1 [label="Matemática"];
-    M2 [label="Física"];
-    M3 [label="História"];
-    M4 [label="Biologia"];
+    M1 [label="nome: AED1 \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
+    M2 [label="AED2 \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 20"];
+    M3 [label="BD \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
+    M4 [label="SEDO \nHoras: 72 \nSala: 1 \nsemestre: 2 \npeso: 20"];
+    M5 [label="CUV \nHoras: 72 \nSala: 1 \nsemestre: 1 \npeso: 20"];
+    M6 [label="CVV \nHoras: 72 \nSala: 1 \nsemestre: 1 \npeso: 15"];
+    M7 [label="IA \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 15"];
+    M8 [label="LP \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 20"];
   }
 
   //Ligações entre professores e matérias

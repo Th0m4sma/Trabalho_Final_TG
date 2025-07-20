@@ -1,60 +1,109 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
-#define MAX_LINE 256
+#include "interacoes.h"
 
 int main() {
-    FILE *file = fopen("grafo.dot", "r");
-    if (!file) {
-        perror("Erro ao abrir o arquivo");
+    int qtd_prof = 0;
+    int qtd_disc = 0;
+    professor *professores = carregar_professores("grafo.dot", &qtd_prof);
+    disciplina *disciplinas = pegar_disciplinas("grafo.dot", &qtd_disc);
+
+
+    if (!professores) {
+        printf("Erro ao carregar professores.\n");
         return 1;
     }
 
-    char line[MAX_LINE];
-
-    printf("Professores encontrados:\n\n");
-
-    while (fgets(line, MAX_LINE, file)) {
-        // Verifica se a linha começa com 'P' seguido de dígito (ex: P1, P2 ...)
-        if (line[0] == 'P' && (line[1] >= '0' && line[1] <= '9')) {
-            // Procura pela string label= para pegar o conteúdo dentro das aspas
-            char *start = strstr(line, "label=");
-            if (start) {
-                start += strlen("label=");
-                // pula espaços em branco até encontrar a aspa
-                while (*start == ' ' || *start == '\t') start++;
-
-                if (*start == '"') {
-                    start++; // pula a aspa inicial
-
-                    // Agora copia até a aspa final (antes do ']')
-                    char *end = strchr(start, '"');
-                    if (end) {
-                        int length = end - start;
-                        char professorInfo[MAX_LINE];
-                        strncpy(professorInfo, start, length);
-                        professorInfo[length] = '\0';
-
-                        // Trocar "\n" por nova linha no printf
-                        for (int i = 0; i < length; i++) {
-                            if (professorInfo[i] == '\\' && professorInfo[i+1] == 'n') {
-                                professorInfo[i] = '\n';
-                                // remove o 'n' seguinte
-                                for (int j = i + 1; j < length; j++) {
-                                    professorInfo[j] = professorInfo[j+1];
-                                }
-                                length--;
-                            }
-                        }
-
-                        printf("%s\n\n", professorInfo);
-                    }
-                }
-            }
-        }
+    if (!disciplinas) {
+        printf("Erro ao carregar disciplinas.\n");
+        return 1;
     }
 
-    fclose(file);
+
+
+
+
+
+
+
+    printf("Professores carregados:\n\n");
+    for (int i = 0; i < qtd_prof; i++) {
+        printf("ID: %d\n", professores[i].id);
+        printf("Nome: %s\n", professores[i].nome);
+        printf("Matérias: %s\n", professores[i].materias);
+        printf("Turno: %s\n", professores[i].turno);
+        printf("Máx. Aulas: %d\n\n", professores[i].max_aulas);
+    }
+
+
+    printf("Materias carregadas:\n\n");
+    for (int i = 0; i < qtd_disc; i++) {
+        printf("ID: %d\n", disciplinas[i].id);
+        printf("Nome: %s\n", disciplinas[i].nome);
+        printf("Peso: %d\n", disciplinas[i].peso);
+        printf("Tipo Sala: %d\n", disciplinas[i].tipo_sala);
+        printf("Horas Disciplina: %d\n\n", disciplinas[i].horas_disc);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    // Liberar memória
+    for (int i = 0; i < qtd_prof; i++) {
+        free(professores[i].nome);
+        free(professores[i].materias);
+        free(professores[i].turno);
+    }
+    // Liberar memória
+    for (int i = 0; i < qtd_disc; i++) {
+        free(disciplinas[i].nome);
+    }
+    free(disciplinas);
+    free(professores);
+
     return 0;
 }
