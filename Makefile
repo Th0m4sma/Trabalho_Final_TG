@@ -1,4 +1,11 @@
-all: main
+all: run
+
+run: py main
+	./main
+
+py:
+	python3 gerador_arquivos_dot.py
+	python3 gerador_grafo.py
 
 main: main.o interacoes.o interface.o
 	gcc -o main main.o interacoes.o interface.o
@@ -14,4 +21,3 @@ interface.o: interface.c interface.h
 
 clean:
 	rm -f *.o main
-

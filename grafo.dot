@@ -1,63 +1,67 @@
 graph G {
-  //Estilo padrão dos nós(para imprimir)
-  node [shape=box, style=filled, color=lightgray];
-
-
-
-
-
-
-  // Subgrafo de Professores
-  subgraph cluster_professores {
-    label = "Professores";
-    style = filled;
-    color = lightblue;
-
-    P1 [label= "Nome: Otavio \nMatérias: AED1, LP, AED2 \nTurno: [h1]  \nMáx. Aulas: 1"];
-    P2 [label= "Nome: Daniela \nMatérias: CUV, SEDO, CVV \nTurno: [h2]  \nMáx. Aulas: 1"];
-    P3 [label= "Nome: Daniela Musa \nMatérias: BD, AED1 \nTurno: [h1,h2]  \nMáx. Aulas: 2"];
-    P4 [label= "Nome: Regina \nMatérias: AED1, AED2 \nTurno: [h2]  \nMáx. Aulas: 1"];
-    P5 [label= "Nome: Lilian Berton \nMatérias: LP, AED1, IA, AED2 \nTurno: [h1,h2]  \nMáx. Aulas: 2"];
-  }
-
-
-
-
-
-
-
-
-
-
-
-  //Subgrafo de Matérias
-  subgraph cluster_materias {
-    label = "Matérias";
-    style = filled;
-    color = lightgreen;
-
-    M1 [label="AED1 \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
-    M2 [label="AED2 \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 20"];
-    M3 [label="BD \nHoras: 72 \nSala: 2 \nsemestre: 2 \npeso: 20"];
-    M4 [label="SEDO \nHoras: 72 \nSala: 1 \nsemestre: 2 \npeso: 20"];
-    M5 [label="CUV \nHoras: 72 \nSala: 1 \nsemestre: 1 \npeso: 20"];
-    M6 [label="CVV \nHoras: 72 \nSala: 1 \nsemestre: 1 \npeso: 15"];
-    M7 [label="IA \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 15"];
-    M8 [label="LP \nHoras: 72 \nSala: 2 \nsemestre: 1 \npeso: 20"];
-  }
-
-
-  P1 -- M1;
-  P1 -- M2;
-  P1 -- M8;
-  P2 -- M4;
-  P2 -- M5;
-  P2 -- M6;
-  P3 -- M3;
-  P3 -- M1;
-  P4 -- M2;
-  P4 -- M1;
-  P5 -- M1;
-  P5 -- M7;
-  P5 -- M8;
+    AEDI_1 -- AEDI_2;
+    BD_1 -- BD_2;
+    BD_1 -- PAA_1;
+    BD_1 -- PAA_2;
+    BD_1 -- POO_1;
+    BD_1 -- POO_2;
+    BD_2 -- PAA_1;
+    BD_2 -- PAA_2;
+    BD_2 -- POO_1;
+    BD_2 -- POO_2;
+    CG_1 -- CG_2;
+    CG_1 -- Compiladores_1;
+    CG_1 -- Compiladores_2;
+    CG_1 -- ES_1;
+    CG_1 -- ES_2;
+    CG_1 -- PCD_1;
+    CG_1 -- PCD_2;
+    CG_1 -- Redes_1;
+    CG_1 -- Redes_2;
+    CG_2 -- Compiladores_1;
+    CG_2 -- Compiladores_2;
+    CG_2 -- ES_1;
+    CG_2 -- ES_2;
+    CG_2 -- PCD_1;
+    CG_2 -- PCD_2;
+    CG_2 -- Redes_1;
+    CG_2 -- Redes_2;
+    Compiladores_1 -- Compiladores_2;
+    Compiladores_1 -- ES_1;
+    Compiladores_1 -- ES_2;
+    Compiladores_1 -- PCD_1;
+    Compiladores_1 -- PCD_2;
+    Compiladores_1 -- Redes_1;
+    Compiladores_1 -- Redes_2;
+    Compiladores_2 -- ES_1;
+    Compiladores_2 -- ES_2;
+    Compiladores_2 -- PCD_1;
+    Compiladores_2 -- PCD_2;
+    Compiladores_2 -- Redes_1;
+    Compiladores_2 -- Redes_2;
+    ES_1 -- ES_2;
+    ES_1 -- PCD_1;
+    ES_1 -- PCD_2;
+    ES_1 -- POO_1;
+    ES_1 -- POO_2;
+    ES_1 -- Redes_1;
+    ES_1 -- Redes_2;
+    ES_2 -- PCD_1;
+    ES_2 -- PCD_2;
+    ES_2 -- POO_1;
+    ES_2 -- POO_2;
+    ES_2 -- Redes_1;
+    ES_2 -- Redes_2;
+    PAA_1 -- PAA_2;
+    PAA_1 -- POO_1;
+    PAA_1 -- POO_2;
+    PAA_2 -- POO_1;
+    PAA_2 -- POO_2;
+    PCD_1 -- PCD_2;
+    PCD_1 -- Redes_1;
+    PCD_1 -- Redes_2;
+    PCD_2 -- Redes_1;
+    PCD_2 -- Redes_2;
+    POO_1 -- POO_2;
+    Redes_1 -- Redes_2;
 }
