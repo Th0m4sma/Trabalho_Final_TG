@@ -4,6 +4,8 @@
 #include <stdbool.h>
 #include <limits.h>
 
+
+
 // --- CONSTANTES GLOBAIS ---
 #define MAX_VERTICES 50
 #define MAX_DISCIPLINAS 25
