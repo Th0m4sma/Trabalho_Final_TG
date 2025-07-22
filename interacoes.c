@@ -368,7 +368,12 @@ void imprimir_lista_adjacencia(NoDisc* lista, int qtd_disc) {
     }
 }
 
-
+void imprimindo_caracteristicas(disciplina* disciplinas, int qtd_disc, professor* professores, int qtd_prof) {
+    printf("╔═══════════════════════════════════════════════════════════════════════╗\n");
+    printf("║                      QUANTIDADE DISCIPLINAS: %d                        ║\n",qtd_disc);
+    printf("║                      QUANTIDADE PROFESSORES: %d                        ║\n",qtd_prof);
+    printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
+}
 
 
 
@@ -410,7 +415,6 @@ int* lista_professores_aulas(professor *professores, int qtd_prof) {
         // É uma boa prática verificar se a alocação de memória foi bem-sucedida.
         return NULL;
     }
-
     // Preenche a lista com o valor de max_aulas de cada professor.
     for (int i = 0; i < qtd_prof; i++) {
         lista[i] = professores[i].max_aulas;
@@ -418,9 +422,6 @@ int* lista_professores_aulas(professor *professores, int qtd_prof) {
     
     return lista;
 }
-
-
-
 
 int backtracking_max_disciplinas(
     NoDisc* lista_adjacencia,
@@ -434,40 +435,56 @@ int backtracking_max_disciplinas(
     int* max_disciplinas,
     int disciplinas_alocadas
 ) {
+    // Condição de parada: chegou ao fim da lista de disciplinas
     if (pos == qtd_disc) {
         if (disciplinas_alocadas > *max_disciplinas) {
             *max_disciplinas = disciplinas_alocadas;
         }
-        return 0;  // continua buscando melhores
+        return 0; // Retorna para continuar explorando outros ramos
     }
-
-    int encontrou = 0;
+    int encontrou_professor_valido = 0;
     ProfAdj* aux = lista_adjacencia[pos].lista_profs;
 
+    // --- TENTATIVA 1: Alocar um professor para a disciplina 'pos' ---
     while (aux != NULL) {
         int prof_id = aux->prof->id;
 
+        // Verifica se o professor pode dar mais uma aula
         if (prof_aulas[prof_id] < aux->prof->max_aulas) {
+            encontrou_professor_valido = 1; // Marca que encontramos uma opção
+
+            // Aloca
             lista[pos] = prof_id;
             prof_aulas[prof_id]++;
-            encontrou = 1;
 
+            // Chama a recursão para a próxima disciplina
             backtracking_max_disciplinas(lista_adjacencia, disciplinas, qtd_disc, professores,
                                           qtd_prof, pos + 1, lista, prof_aulas, max_disciplinas, disciplinas_alocadas + 1);
 
+            // Desfaz a alocação (backtrack) para testar outros caminhos
             prof_aulas[prof_id]--;
             lista[pos] = -1;
         }
-
         aux = aux->prox;
     }
 
-    // Tenta pular essa disciplina (não alocar ninguém)
-    backtracking_max_disciplinas(lista_adjacencia, disciplinas, qtd_disc, professores,
-                                  qtd_prof, pos + 1, lista, prof_aulas, max_disciplinas, disciplinas_alocadas);
+    // --- TENTATIVA 2: Não alocar esta disciplina (pular) ---
+    // Esta chamada só deve acontecer se NENHUM professor foi (ou pôde ser) alocado.
+    // Se você sempre fizer essa chamada, estará explorando caminhos redundantes e incorretos.
+    // A lógica correta é: OU você aloca um professor (explorado no while), OU você pula.
+    // O `if` abaixo garante isso.
+    if (!encontrou_professor_valido) {
+         backtracking_max_disciplinas(lista_adjacencia, disciplinas, qtd_disc, professores,
+                                      qtd_prof, pos + 1, lista, prof_aulas, max_disciplinas, disciplinas_alocadas);
+    }
+    
+    // Se você QUER explorar o caminho de pular a disciplina MESMO que ela possa ser alocada,
+    // a chamada deve ser feita fora do if, mas isso muda o objetivo do problema.
+    // A lógica que implementei acima maximiza o número de disciplinas alocadas.
 
     return 0;
 }
+
 
 
 

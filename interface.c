@@ -30,11 +30,16 @@ void imprimir_banner() {
     printf("║                                                                       ║\n");
     printf("║      ───────────────────── MATRIZ HORÁRIA ─────────────────────       ║\n");
     printf("║                                                                       ║\n");
+    printf("║═══════════════════════════════════════════════════════════════════════║\n");
+    printf("║═───────────────────[ 1 ]─[CARACTERISTICAS-BASICAS]───────────────────═║\n");
+    printf("║═──────────────────[ 2 ]─[VISUALIZANDO-LISTA-INICIAL]─────────────────═║\n");
+    printf("║═──────────────────────[ 3 ]─[APLICANDO-ALGORITMO]────────────────────═║\n");
+    printf("║═──────────────────[ 4 ]─[VISUALIZANDO-LISTA-INICIAL]─────────────────═║\n");
     printf("╚═══════════════════════════════════════════════════════════════════════╝\n");
 }
 
 
-void saindo_menu_principal() {
+void opções_menu_principal() {
 
 }
 

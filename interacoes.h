@@ -39,7 +39,18 @@ void ler_materias(const char *nome_arquivo);
 char* trim(char* str);
 void imprimir_lista_adjacencia(NoDisc* lista, int qtd_disc);
 NoDisc* construir_lista_adjacencia(disciplina* disciplinas, int qtd_disc, professor* professores, int qtd_prof);
-
-
+int* lista_professores_aulas(professor *professores, int qtd_prof);
+int backtracking_max_disciplinas(
+    NoDisc* lista_adjacencia,
+    disciplina* disciplinas,
+    int qtd_disc,
+    professor* professores,
+    int qtd_prof,
+    int pos,
+    int* lista,
+    int* prof_aulas,
+    int* max_disciplinas,
+    int disciplinas_alocadas
+);
 
 #endif
