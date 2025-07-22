@@ -369,14 +369,105 @@ void imprimir_lista_adjacencia(NoDisc* lista, int qtd_disc) {
 }
 
 
+
+
+
 // => APLICANDO ESTRATEGIA PARA DETERMINAR OS PROFESSORES(BACKTRACKING):
+disciplina* ordenar_disciplinas_importantes(disciplina* disciplinas, int qtd_disc, int semestre) {
+    int i, j, menor_idx;
+    disciplina aux;
 
-int* determinando_professores_disciplina() {
+    // Duplicar peso para as disciplinas do semestre informado
+    for(i = 0; i < qtd_disc; i++) {
+        if(disciplinas[i].semestre == semestre) {
+            disciplinas[i].peso *= 2;
+        }
+    }
 
+    // Selection Sort crescente pelo peso
+    for(i = 0; i < qtd_disc - 1; i++) {
+        menor_idx = i;
+        for(j = i + 1; j < qtd_disc; j++) {
+            if(disciplinas[j].peso < disciplinas[menor_idx].peso) {
+                menor_idx = j;
+            }
+        }
+        // Troca os elementos nas posições i e menor_idx
+        if(menor_idx != i) {
+            aux = disciplinas[i];
+            disciplinas[i] = disciplinas[menor_idx];
+            disciplinas[menor_idx] = aux;
+        }
+    }
+
+    return disciplinas;
+}
+
+int* lista_professores_aulas(professor *professores, int qtd_prof) {
+    // Aloca memória para a lista de inteiros.
+    int* lista = (int*)malloc(qtd_prof * sizeof(int));
+    if (lista == NULL) {
+        // É uma boa prática verificar se a alocação de memória foi bem-sucedida.
+        return NULL;
+    }
+
+    // Preenche a lista com o valor de max_aulas de cada professor.
+    for (int i = 0; i < qtd_prof; i++) {
+        lista[i] = professores[i].max_aulas;
+    }
+    
+    return lista;
 }
 
 
 
+
+int backtracking_max_disciplinas(
+    NoDisc* lista_adjacencia,
+    disciplina* disciplinas,
+    int qtd_disc,
+    professor* professores,
+    int qtd_prof,
+    int pos,
+    int* lista,
+    int* prof_aulas,
+    int* max_disciplinas,
+    int disciplinas_alocadas
+) {
+    if (pos == qtd_disc) {
+        if (disciplinas_alocadas > *max_disciplinas) {
+            *max_disciplinas = disciplinas_alocadas;
+        }
+        return 0;  // continua buscando melhores
+    }
+
+    int encontrou = 0;
+    ProfAdj* aux = lista_adjacencia[pos].lista_profs;
+
+    while (aux != NULL) {
+        int prof_id = aux->prof->id;
+
+        if (prof_aulas[prof_id] < aux->prof->max_aulas) {
+            lista[pos] = prof_id;
+            prof_aulas[prof_id]++;
+            encontrou = 1;
+
+            backtracking_max_disciplinas(lista_adjacencia, disciplinas, qtd_disc, professores,
+                                          qtd_prof, pos + 1, lista, prof_aulas, max_disciplinas, disciplinas_alocadas + 1);
+
+            prof_aulas[prof_id]--;
+            lista[pos] = -1;
+        }
+
+        aux = aux->prox;
+    }
+
+    // Tenta pular essa disciplina (não alocar ninguém)
+    backtracking_max_disciplinas(lista_adjacencia, disciplinas, qtd_disc, professores,
+                                  qtd_prof, pos + 1, lista, prof_aulas, max_disciplinas, disciplinas_alocadas);
+
+    return 0;
+}
 
 
 

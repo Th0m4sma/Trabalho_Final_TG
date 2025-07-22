@@ -47,19 +47,17 @@ graph G {
   }
 
 
-
-
-
-
-
-
-
-
-
-
-  //Ligações entre professores e matérias
   P1 -- M1;
   P1 -- M2;
-  P2 -- M3;
-  P3 -- M4;
+  P1 -- M8;
+  P2 -- M4;
+  P2 -- M5;
+  P2 -- M6;
+  P3 -- M3;
+  P3 -- M1;
+  P4 -- M2;
+  P4 -- M1;
+  P5 -- M1;
+  P5 -- M7;
+  P5 -- M8;
 }

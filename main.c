@@ -8,29 +8,38 @@
 int main() {
     int qtd_prof = 0;
     int qtd_disc = 0;
-    bool sair = false;
+    int max_disciplinas = 0;
+    int resultado;
     int opcao_menu;
+    int *lista;
+    bool sair = false;
 
-    NoDisc* lista;
+    NoDisc* lista_adjacencia;
     professor *professores = carregar_professores("grafo.dot", &qtd_prof);
     disciplina *disciplinas = pegar_disciplinas("grafo.dot", &qtd_disc);
+    int* lista = (int *) malloc(qtd_disc * sizeof(int));
+    int* lista_aulas_max = lista_professores_aulas(professores,qtd_prof);
 
-
-    lista = construir_lista_adjacencia(disciplinas,qtd_disc,professores,qtd_prof);
+    lista_adjacencia = construir_lista_adjacencia(disciplinas,qtd_disc,professores,qtd_prof);
 
     while(!sair) {
         limpar_terminal();
         imprimir_banner();
 
         printf("Digite a opção desejada: ");
-        scanf("%d",opcao_menu);
+        scanf("%d",&opcao_menu);
 
         
         switch (opcao_menu) {
         case 1:
-            imprimir_lista_adjacencia(lista, qtd_disc);
+            imprimir_lista_adjacencia(lista_adjacencia, qtd_disc);
             break;
         case 2:
+            printf("REALIZANDO BACKTRACKING");
+            resultado = (lista_adjacencia, ordenar_disciplinas_importantes(disciplinas, qtd_disc, 1), qtd_disc, professores,
+                             qtd_prof, 0, lista, lista_aulas_max, &max_disciplinas, 0);
+
+            printf("Resultado BackTracking: %d", resultado);
             break;
         case 3:
             break;
