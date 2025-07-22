@@ -8,6 +8,11 @@
 #define MAX_LINE 512
 #define MAX_PROFESSORES 100
 #define MAX_DISC  20
+#define MAX_VERTICES 80
+#define MAX_LABEL_LENGTH 80 
+
+
+
 
 // => FUNÇÕES BASICAS PARA LER GRAFO.DOT COM PROFESSORES E DISCIPLINAS:
 void ler_professores(const char *nome_arquivo) {
@@ -266,15 +271,6 @@ disciplina* pegar_disciplinas(const char* arquivo_dot, int* total) {
     *total = contador;
     return lista;
 }
-
-
-
-
-
-
-
-
-
 
 
 

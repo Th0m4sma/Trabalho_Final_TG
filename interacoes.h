@@ -30,8 +30,6 @@ typedef struct NoDisc {
 } NoDisc;
 
 
-
-
 disciplina* pegar_disciplinas(const char* arquivo_dot, int* total);
 professor* carregar_professores(const char *nome_arquivo, int *quantidade);
 void ler_professores(const char *nome_arquivo);
