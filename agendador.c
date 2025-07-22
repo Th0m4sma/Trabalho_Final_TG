@@ -253,7 +253,7 @@ void coloracao_inteligente(Graph* g, int* cores) {
 
 // --- FUNÇÃO PRINCIPAL ---
 int main() {
-    const char* arquivo_grafo = "grafo.dot";
+    const char* arquivo_grafo = "grafo_gerado.dot";
     const char* arquivo_atribuicoes = "atribuicoes.txt";
 
     // Carrega os dados necessários
