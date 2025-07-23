@@ -127,7 +127,6 @@ void menu_operacao() {
     linha_final();
 }
 
-
 void menu_arvores() {
     linha_final();
     printf("][===-----------[-MENU--ÁRVORES-]----------===][\n");

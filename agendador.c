@@ -3,56 +3,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include <limits.h>
-
-
-
-// --- CONSTANTES GLOBAIS ---
-#define MAX_VERTICES 50
-#define MAX_DISCIPLINAS 25
-#define MAX_NOME_LEN 50
-#define MAX_LINHA_LEN 256
-#define NUM_HORARIOS 20
-
-// --- ESTRUTURAS DE DADOS ---
-typedef struct Node {
-    int vertice_idx;
-    struct Node* next;
-} Node;
-
-typedef struct {
-    int num_vertices;
-    Node* adj_lists[MAX_VERTICES];
-    char vertex_names[MAX_VERTICES][MAX_NOME_LEN];
-} Graph;
-
-typedef struct {
-    int id;
-    char dia[20];
-    char descricao[50];
-    int penalidade_base;
-} HorarioInfo;
-
-typedef struct {
-    char nome_base[MAX_NOME_LEN];
-    int periodo;
-} DisciplinaInfo;
-
-typedef struct {
-    char disciplina[MAX_NOME_LEN];
-    char professor[MAX_NOME_LEN];
-} Atribuicao;
-
-
-// --- VARIÁVEIS GLOBAIS ---
-DisciplinaInfo METADADOS_DISCIPLINAS[] = {
-    {"Redes", 6}, {"CG", 6}, {"PCD", 6}, {"ES", 6}, {"Compiladores", 6},
-    {"PAA", 4}, {"POO", 4}, {"BD", 4}, {"AED_I", 2}
-};
-const int NUM_METADADOS = sizeof(METADADOS_DISCIPLINAS) / sizeof(METADADOS_DISCIPLINAS[0]);
-HorarioInfo HORARIOS_INFO[NUM_HORARIOS];
-Atribuicao ATRIBUICOES_PROFESSORES[MAX_DISCIPLINAS];
-int num_atribuicoes = 0;
-
+#include "agendador.h"
 
 // --- FUNÇÕES DO GRAFO ---
 Graph* criar_grafo() {
@@ -252,9 +203,8 @@ void coloracao_inteligente(Graph* g, int* cores) {
     }
 }
 
-
 // --- FUNÇÃO PRINCIPAL ---
-int main() {
+int agendador_funcao() {
     const char* arquivo_grafo = "grafo_gerado.dot";
     const char* arquivo_atribuicoes = "atribuicoes.txt";
 
