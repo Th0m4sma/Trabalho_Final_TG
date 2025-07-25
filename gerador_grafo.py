@@ -53,7 +53,7 @@ for i in range(len(vertices)):
             arestas.add(aresta_ordenada)
 
 # --- Escrita do arquivo .dot
-with open("grafo_gerado.dot", "w") as f:
+with open("grafo.dot", "w") as f:
     f.write("graph G {\n")
     for v1, v2 in sorted(list(arestas)):
         f.write(f"    {v1} -- {v2};\n")
@@ -64,4 +64,4 @@ with open("atribuicoes.txt", "w") as f:
     for disciplina, professor in professores_finais_atribuidos.items():
         f.write(f"{disciplina} {professor}\n")
 
-print("Arquivos 'grafo_gerado.dot' e 'atribuicoes.txt' gerados com sucesso!")
+print("Arquivos 'grafo.dot' e 'atribuicoes.txt' gerados com sucesso!")
