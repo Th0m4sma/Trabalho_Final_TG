@@ -1,0 +1,157 @@
+graph G {
+  // Layout e estilo geral
+  layout=sfdp;
+  overlap=false;
+  node [shape=ellipse, style=filled, color=lightgray];
+
+  subgraph cluster_AEDI {
+    label = "Disciplina: AEDI";
+    style = filled;
+    color = lightgreen;
+    "AEDI_1";
+    "AEDI_2";
+  }
+
+  subgraph cluster_BD {
+    label = "Disciplina: BD";
+    style = filled;
+    color = lightgreen;
+    "BD_1";
+    "BD_2";
+  }
+
+  subgraph cluster_CG {
+    label = "Disciplina: CG";
+    style = filled;
+    color = lightgreen;
+    "CG_1";
+    "CG_2";
+  }
+
+  subgraph cluster_Compiladores {
+    label = "Disciplina: Compiladores";
+    style = filled;
+    color = lightgreen;
+    "Compiladores_1";
+    "Compiladores_2";
+  }
+
+  subgraph cluster_ES {
+    label = "Disciplina: ES";
+    style = filled;
+    color = lightgreen;
+    "ES_1";
+    "ES_2";
+  }
+
+  subgraph cluster_PAA {
+    label = "Disciplina: PAA";
+    style = filled;
+    color = lightgreen;
+    "PAA_1";
+    "PAA_2";
+  }
+
+  subgraph cluster_PCD {
+    label = "Disciplina: PCD";
+    style = filled;
+    color = lightgreen;
+    "PCD_1";
+    "PCD_2";
+  }
+
+  subgraph cluster_POO {
+    label = "Disciplina: POO";
+    style = filled;
+    color = lightgreen;
+    "POO_1";
+    "POO_2";
+  }
+
+  subgraph cluster_Redes {
+    label = "Disciplina: Redes";
+    style = filled;
+    color = lightgreen;
+    "Redes_1";
+    "Redes_2";
+  }
+
+  // Arestas representam TODOS os conflitos
+  "AEDI_1" -- "AEDI_2";
+  "AEDI_1" -- "CG_1";
+  "AEDI_1" -- "CG_2";
+  "AEDI_1" -- "PCD_1";
+  "AEDI_1" -- "PCD_2";
+  "AEDI_2" -- "CG_1";
+  "AEDI_2" -- "CG_2";
+  "AEDI_2" -- "PCD_1";
+  "AEDI_2" -- "PCD_2";
+  "BD_1" -- "BD_2";
+  "BD_1" -- "PAA_1";
+  "BD_1" -- "PAA_2";
+  "BD_1" -- "POO_1";
+  "BD_1" -- "POO_2";
+  "BD_2" -- "PAA_1";
+  "BD_2" -- "PAA_2";
+  "BD_2" -- "POO_1";
+  "BD_2" -- "POO_2";
+  "CG_1" -- "CG_2";
+  "CG_1" -- "Compiladores_1";
+  "CG_1" -- "Compiladores_2";
+  "CG_1" -- "ES_1";
+  "CG_1" -- "ES_2";
+  "CG_1" -- "PCD_1";
+  "CG_1" -- "PCD_2";
+  "CG_1" -- "Redes_1";
+  "CG_1" -- "Redes_2";
+  "CG_2" -- "Compiladores_1";
+  "CG_2" -- "Compiladores_2";
+  "CG_2" -- "ES_1";
+  "CG_2" -- "ES_2";
+  "CG_2" -- "PCD_1";
+  "CG_2" -- "PCD_2";
+  "CG_2" -- "Redes_1";
+  "CG_2" -- "Redes_2";
+  "Compiladores_1" -- "Compiladores_2";
+  "Compiladores_1" -- "ES_1";
+  "Compiladores_1" -- "ES_2";
+  "Compiladores_1" -- "PCD_1";
+  "Compiladores_1" -- "PCD_2";
+  "Compiladores_1" -- "POO_1";
+  "Compiladores_1" -- "POO_2";
+  "Compiladores_1" -- "Redes_1";
+  "Compiladores_1" -- "Redes_2";
+  "Compiladores_2" -- "ES_1";
+  "Compiladores_2" -- "ES_2";
+  "Compiladores_2" -- "PCD_1";
+  "Compiladores_2" -- "PCD_2";
+  "Compiladores_2" -- "POO_1";
+  "Compiladores_2" -- "POO_2";
+  "Compiladores_2" -- "Redes_1";
+  "Compiladores_2" -- "Redes_2";
+  "ES_1" -- "ES_2";
+  "ES_1" -- "PCD_1";
+  "ES_1" -- "PCD_2";
+  "ES_1" -- "POO_1";
+  "ES_1" -- "POO_2";
+  "ES_1" -- "Redes_1";
+  "ES_1" -- "Redes_2";
+  "ES_2" -- "PCD_1";
+  "ES_2" -- "PCD_2";
+  "ES_2" -- "POO_1";
+  "ES_2" -- "POO_2";
+  "ES_2" -- "Redes_1";
+  "ES_2" -- "Redes_2";
+  "PAA_1" -- "PAA_2";
+  "PAA_1" -- "POO_1";
+  "PAA_1" -- "POO_2";
+  "PAA_2" -- "POO_1";
+  "PAA_2" -- "POO_2";
+  "PCD_1" -- "PCD_2";
+  "PCD_1" -- "Redes_1";
+  "PCD_1" -- "Redes_2";
+  "PCD_2" -- "Redes_1";
+  "PCD_2" -- "Redes_2";
+  "POO_1" -- "POO_2";
+  "Redes_1" -- "Redes_2";
+}

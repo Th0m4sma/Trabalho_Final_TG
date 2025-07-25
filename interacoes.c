@@ -2878,17 +2878,17 @@ void menu_visualizacao() {
             case 1:
                 limpar_terminal();
                 exibirMatrizAdjacente();
-                getchar();
+                getchar();getchar();
                 break;
             case 2:
                 limpar_terminal();
                 exibirMatrizIncidencia();
-                getchar();
+                getchar();getchar();
                 break;
             case 3:
                 limpar_terminal();
                 exibirListaDeAdjacencia();
-                getchar();
+                getchar();getchar();
                 break;
             default:
                 sair = true;
