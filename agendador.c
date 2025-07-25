@@ -5,6 +5,19 @@
 #include <limits.h>
 #include "agendador.h"
 
+
+DisciplinaInfo METADADOS_DISCIPLINAS[] = {
+    {"Redes", 6}, {"CG", 6}, {"PCD", 6}, {"ES", 6}, {"Compiladores", 6},
+    {"PAA", 4}, {"POO", 4}, {"BD", 4}, {"AED_I", 2}
+};
+
+const int NUM_METADADOS = sizeof(METADADOS_DISCIPLINAS) / sizeof(METADADOS_DISCIPLINAS[0]);
+
+HorarioInfo HORARIOS_INFO[NUM_HORARIOS];
+Atribuicao ATRIBUICOES_PROFESSORES[MAX_DISCIPLINAS];
+int num_atribuicoes = 0;
+
+
 // --- FUNÇÕES DO GRAFO ---
 Graph* criar_grafo() {
     Graph* g = (Graph*)malloc(sizeof(Graph));
@@ -75,7 +88,6 @@ void liberar_grafo(Graph* g) {
     }
     free(g);
 }
-
 
 // --- FUNÇÕES DE SETUP E HELPERS ---
 void carregar_atribuicoes(const char* filename) {

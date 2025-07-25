@@ -2863,10 +2863,82 @@ void executar_menu_transformacao() {
 }
 
 
+void menu_visualizacao() {
+    int opcao;
+    int i;
+    bool sair = false;
+
+    while(!sair) {
+        limpar_terminal();
+        menu_visualizacao_impressao();
+
+        scanf("%d", &opcao);
+
+        switch(opcao) {
+            case 1:
+                limpar_terminal();
+                exibirMatrizAdjacente();
+                getchar();
+                break;
+            case 2:
+                limpar_terminal();
+                exibirMatrizIncidencia();
+                getchar();
+                break;
+            case 3:
+                limpar_terminal();
+                exibirListaDeAdjacencia();
+                getchar();
+                break;
+            default:
+                sair = true;
+                break;
+        }
+    }
+    
+}
 
 
+void menu_ciclos_buscas() {
+    int i;
+    bool sair = false;
+    int opcao;
 
 
+    while(!sair) {
+        limpar_terminal();
+        menu_ciclo_buscas_impressao();
+        printf("Digite a opção desejada: ");
+        scanf("%d", &opcao);
+
+        switch(opcao) {
+            case 1:
+                limpar_terminal();
+                buscando();
+                getchar();getchar();
+                break;
+            case 2:
+                limpar_terminal();
+                menuVerificacaoSubgrafo();
+                getchar();getchar();
+                break;
+            case 3:
+                limpar_terminal();
+                verificarCicloConjunto();
+                getchar();getchar();
+                break;
+            case 4:
+                limpar_terminal();
+                printf("Os grafos sao isomorfos? %s\n",verificaIsomorfismo() ? "Sim" : "Nao");
+                sleep(4);
+                getchar();getchar();
+                break;
+            case 5:
+                sair = true;
+                break;
+        }
+    }
+}
 
 
 

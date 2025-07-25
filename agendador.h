@@ -8,6 +8,7 @@
 #define MAX_LINHA_LEN 256
 #define NUM_HORARIOS 20
 
+
 // --- ESTRUTURAS DE DADOS ---
 typedef struct Node {
     int vertice_idx;
@@ -37,19 +38,13 @@ typedef struct {
     char professor[MAX_NOME_LEN];
 } Atribuicao;
 
-// --- VARIÁVEIS GLOBAIS ---
-DisciplinaInfo METADADOS_DISCIPLINAS[] = {
-    {"Redes", 6}, {"CG", 6}, {"PCD", 6}, {"ES", 6}, {"Compiladores", 6},
-    {"PAA", 4}, {"POO", 4}, {"BD", 4}, {"AED_I", 2}
-};
 
 
-const int NUM_METADADOS = sizeof(METADADOS_DISCIPLINAS) / sizeof(METADADOS_DISCIPLINAS[0]);
-HorarioInfo HORARIOS_INFO[NUM_HORARIOS];
-Atribuicao ATRIBUICOES_PROFESSORES[MAX_DISCIPLINAS];
-int num_atribuicoes = 0;
-
-
+extern DisciplinaInfo METADADOS_DISCIPLINAS[];
+extern const int NUM_METADADOS;
+extern HorarioInfo HORARIOS_INFO[NUM_HORARIOS];
+extern Atribuicao ATRIBUICOES_PROFESSORES[MAX_DISCIPLINAS];
+extern int num_atribuicoes;
 
 
 

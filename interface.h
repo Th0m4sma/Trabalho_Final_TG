@@ -12,7 +12,7 @@ void menu_arvores();
 void menu_transformacao();
 void linha_final();
 void menu_operacao();
-
-
+void menu_visualizacao_impressao();
+void menu_ciclo_buscas_impressao();
 
 #endif

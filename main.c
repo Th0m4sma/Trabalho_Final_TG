@@ -4,12 +4,12 @@
 #include <time.h>
 #include "interacoes.h"
 #include "interface.h"
-
+#include "agendador.h"
 
 
 
 int main() {
-    bool sair = false;
+    bool sair1 = false, sair = false;
     int opcao;
     int num;
     FILE *file;
@@ -62,9 +62,6 @@ int main() {
                     getchar();getchar();
                     break;
                 }
-                case 3:
-                    sair = true;
-                    break;
             }
     }else {
         while(!sair) {
@@ -82,26 +79,47 @@ int main() {
                     break;
                 case 2:
                     limpar_terminal();
-
+                    menu_visualizacao();
+                    getchar();
                     break;
                 case 3:
                     limpar_terminal();
-
+                    executar_menu_transformacao();
+                    getchar();
                     break;
                 case 4:
                     limpar_terminal();
                     operacoes();
-                    getchar();getchar();
+                    getchar();
                     break;
                 case 5:
+                    limpar_terminal();
+                    arvores();
+                    getchar();
+                    break;
+                case 6:
+                    limpar_terminal();
+                    menu_ciclos_buscas();
+                    getchar();
+                    break;
+                case 7:
+                    limpar_terminal();
+                    agendador_funcao();
+                    getchar();
+                    getchar();
+                    break;
+                case 8:
                     remove("grafo.dot");
                     grafo_inserido = false;
+                    break;
+                case 9:
+                    sair = true;
                     break;
             }
 
         }
     }
-    
+    limpar_terminal();
     return 0;
 }
 

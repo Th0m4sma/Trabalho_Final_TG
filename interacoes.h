@@ -144,10 +144,11 @@ bool compararArvores(Grafo* t1, Grafo* t2);
 void adicionarArvoreUnica(Grafo* t);
 void generateAllSpanningTrees(Grafo* current_tree, Grafo* g_original);
 void encontrarArvoreCentral(Grafo* g_original);
+
 void operacoes();
 void arvores();
-
-
+void menu_visualizacao();
+void menu_ciclos_buscas();
 
 
 
